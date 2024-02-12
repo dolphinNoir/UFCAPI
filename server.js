@@ -2,12 +2,14 @@ require("dotenv").config()
 const port = process.env.PORT;
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require('cors')
 
 const EventsRouter = require("./Routes/EventRoute.JS")
 const FighterRouter = require("./Routes/FighterRoute")
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 mongoose.connect(process.env.DATABASE_URL)
 const db = mongoose.connection;
