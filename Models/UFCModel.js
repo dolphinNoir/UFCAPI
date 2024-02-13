@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const UFCModel = new mongoose.Schema({
 Location : String,
-Fighter1 : String,
-Fighter2 : String,
+"Fighter 1" : String,
+"Fighter 2" : String,
 Fighter1KD: Number,
 Fighter2KD: Number,
 Fighter1STR: Number,
