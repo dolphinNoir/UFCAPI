@@ -24,5 +24,27 @@ router.get("/FindEventsByFighterName/:FighterName", async (req, res) => {
     }
 })
 
+router.get("/FindMatchups", async (req,res) => {
+    try {
+        let fighterOne = req.query.fighter1
+        let fighterTwo = req.query.fighter2
+
+            let events = await UFCModel.find({
+                $or: [
+                    {"Fighter 1": fighterOne, "Fighter 2": fighterTwo},
+                    {"Fighter 1": fighterTwo, "Fighter 2": fighterOne}
+                ]
+            })
+
+            res.json(events)
+        
+
+        } 
+        
+        catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
 
 module.exports = router
