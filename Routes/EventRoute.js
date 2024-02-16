@@ -24,10 +24,10 @@ router.get("/FindEventsByFighterName/:FighterName", async (req, res) => {
     }
 })
 
-router.get("/FindMatchups", async (req,res) => {
+router.get("/FindMatchups/:Fighter1/:Fighter2", async (req,res) => {
     try {
-        let fighterOne = req.query.fighter1
-        let fighterTwo = req.query.fighter2
+        let fighterOne = req.params.Fighter1
+        let fighterTwo = req.params.Fighter2
 
             let events = await UFCModel.find({
                 $or: [
@@ -42,6 +42,23 @@ router.get("/FindMatchups", async (req,res) => {
         } 
         
         catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+router.get("/FindEventsByDateRange/:MinDate/:MaxDate", async (req, res) => {
+    try {
+        const lowerBound = new Date(req.params.MinDate)
+        const upperBound = new Date(req.params.MaxDate)
+
+        console.log(lowerBound)
+        console.log(upperBound)
+
+        const events = await UFCModel.find({FormattedDate: {$gte: lowerBound, $lte: upperBound}})
+
+        res.json(events)
+
+    } catch (error) {
         res.status(500).json({message: error.message})
     }
 })

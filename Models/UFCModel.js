@@ -18,6 +18,7 @@ const UFCModel = new mongoose.Schema({
     Time: String,
     EventName: String,
     Date: String,
+    FormattedDate: Date,
     Winner: String
 })
 

@@ -17,6 +17,7 @@ router.get("/FindStatsByFighterName/:FighterName", async (req, res) => {
             { "Fighter 2": fighterName }
         ]})
 
+
         const statsModel = {
             TotalFights: 0,
             Wins : 0,
@@ -93,7 +94,7 @@ router.get("/FindStatsByFighterName/:FighterName", async (req, res) => {
         let Statistics = await calculateAverage(events)
 
 
-        res.json({Statistics})
+        res.json({name: fighterName, Statistics})
         
     } catch (error) {
         res.status(500).json({message: error.message})
