@@ -84,7 +84,7 @@ router.get("/FindEventsByDateRange/:MinDate/:MaxDate", async (req, res) => {
         console.log(lowerBound)
         console.log(upperBound)
 
-        const events = await UFCModel.find({FormattedDate: {$gte: lowerBound, $lte: upperBound}})
+        const events = await UFCModel.find({FormattedDate: {$gte: lowerBound, $lte: upperBound}}).limit(limit)
 
         if(events.length === 0){
             throw new Error("Cannot find any results, try tweaking your search criteria")

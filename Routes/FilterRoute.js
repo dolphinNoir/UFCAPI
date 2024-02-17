@@ -5,7 +5,14 @@ const UFCModel = require("../Models/UFCModel")
 
 router.get("/", async (req, res) => {
     try {
-        const {fighter1, fighter2, weightClass, minDate, maxDate, winner, location, winMethod, limit} = req.query
+        const {fighter1, fighter2, weightClass, minDate, maxDate, winner, location, winMethod} = req.query
+        let limit = req.query.limit
+
+        if (limit && !isNaN(limit)) {
+            limit = parseInt(limit);
+        } else {
+            limit = 100;
+        }
 
         const query = {};
         if (fighter1) query.fighter1 = fighter1;
@@ -19,7 +26,7 @@ router.get("/", async (req, res) => {
         if (winner) query.winner = winner;
         if (location) query.location = location;
 
-        let mongooseQuery = UFCModel.find();
+        let mongooseQuery = UFCModel.find().limit(limit);
 
         if (fighter1 && fighter2){
             mongooseQuery.or([{"Fighter 1": fighter1, "Fighter 2": fighter2}, {"Fighter 2": fighter1, "Fighter 1": fighter2}])
