@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const EventsRouter = require("./Routes/EventRoute.JS")
 const FighterRouter = require("./Routes/FighterRoute")
+const FilterRouter = require("./Routes/FilterRoute")
 
 const app = express()
 app.use(express.json())
@@ -16,6 +17,7 @@ const db = mongoose.connection;
 
 app.use("/Fighters", FighterRouter)
 app.use("/Events", EventsRouter)
+app.use("/Filter", FilterRouter)
 
 db.on('error', (error) => {console.log(error)})
 db.once('open', () => {console.log("Connected to DB")})

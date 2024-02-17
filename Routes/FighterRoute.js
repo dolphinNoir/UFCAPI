@@ -93,6 +93,9 @@ router.get("/FindStatsByFighterName/:FighterName", async (req, res) => {
     
         let Statistics = await calculateAverage(events)
 
+        if(Statistics.length === 0){
+            throw new Error("Cannot find any results, try tweaking your search criteria")
+        }
 
         res.json({name: fighterName, Statistics})
         

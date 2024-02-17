@@ -12,7 +12,7 @@ const UFCModel = new mongoose.Schema({
     "Fighter_2_TD": Number,
     "Fighter_1_SUB": Number,
     "Fighter_2_SUB": Number,
-    WeightClass: String,
+    "Weight_Class": String,
     Method: String,
     Round: Number,
     Time: String,
