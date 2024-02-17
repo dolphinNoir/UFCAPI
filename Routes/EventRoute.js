@@ -40,6 +40,7 @@ router.get("/FindMatchups/:Fighter1/:Fighter2", async (req,res) => {
     try {
         let fighterOne = req.params.Fighter1
         let fighterTwo = req.params.Fighter2
+        const limit = req.query.limit
 
         if (limit && !isNaN(limit)) {
             limit = parseInt(limit);
@@ -72,6 +73,7 @@ router.get("/FindEventsByDateRange/:MinDate/:MaxDate", async (req, res) => {
     try {
         const lowerBound = new Date(req.params.MinDate)
         const upperBound = new Date(req.params.MaxDate)
+        const limit = req.query.limit
 
         if (limit && !isNaN(limit)) {
             limit = parseInt(limit);
