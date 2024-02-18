@@ -18,13 +18,13 @@ router.get("/", async (req, res) => {
         if (fighter1) query.fighter1 = fighter1;
         if (fighter2) query.fighter2 = fighter2;
         if (weightClass) query.weightClass = weightClass;
-        if (minDate) query.date = { $gte: new Date(minDate) };
-        if (maxDate) {
-            query.date = query.date || {};
-            query.date.$lte = new Date(maxDate);
-        }
+        // if (minDate) query.date = { $gte: new Date(minDate) };
+        // if (maxDate) {
+        //     query.date = query.date || {};
+        //     query.date.$lte = new Date(maxDate);
+        // }
         if (winner) query.winner = winner;
-        if (location) query.location = location;
+        // if (location) query.location = location;
 
         let mongooseQuery = UFCModel.find().limit(limit);
 
