@@ -32,7 +32,7 @@ router.get("/FindEventsByFighterName/:FighterName", async (req, res) => {
         res.json(events)
         
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.json({message: error.message})
     }
 })
 
@@ -65,7 +65,7 @@ router.get("/FindMatchups/:Fighter1/:Fighter2", async (req,res) => {
         } 
         
         catch (error) {
-        res.status(500).json({message: error.message})
+        res.json({message: error.message})
     }
 })
 
@@ -93,7 +93,7 @@ router.get("/FindEventsByDateRange/:MinDate/:MaxDate", async (req, res) => {
         res.json(events)
 
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.json({message: error.message})
     }
 })
 

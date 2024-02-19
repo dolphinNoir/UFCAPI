@@ -100,7 +100,7 @@ router.get("/FindStatsByFighterName/:FighterName", async (req, res) => {
         res.json({name: fighterName, Statistics})
         
     } catch (error) {
-        res.status(500).json({message: error.message})
+        res.json({message: error.message})
     }
 })
 
